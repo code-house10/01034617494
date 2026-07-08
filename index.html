@@ -12,8 +12,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#0f766e" name="theme-color"/>
-<title>السلطان لنقل العفش | نقل وتغليف ورفع الأثاث باحترافية</title>
-<meta content="شركة السلطان لنقل العفش تقدم خدمات نقل وتغليف وفك وتركيب ورفع الأثاث بونش وسيارات مجهزة داخل القاهرة والجيزة وبين المحافظات." name="description"/>
+<title>المهندسلنقل العفش | نقل وتغليف ورفع الأثاث باحترافية</title>
+<meta content="شركة المهندسلنقل العفش تقدم خدمات نقل وتغليف وفك وتركيب ورفع الأثاث بونش وسيارات مجهزة داخل القاهرة والجيزة وبين المحافظات." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
@@ -832,7 +832,7 @@
       }
 
       .trust-item span{
-        font-size:9px;
+        font-size:8px;
         line-height:1.5;
       }
     }
@@ -1005,7 +1005,7 @@
 
       .arrival-copy p{
         max-width:320px;
-        font-size:10px;
+        font-size:9.5px;
         line-height:1.9;
       }
 
@@ -1974,7 +1974,7 @@
 
       .header .header-inner{
         height:68px;
-        min-height:68px;
+        min-height:54px;
         padding:0 62px 0 62px !important;
       }
 
@@ -3045,6 +3045,539 @@ body::after{
   }
 }
 
+
+
+/* =========================================================
+   Compact floating sliding customer reviews
+   ========================================================= */
+.floating-reviews{
+  position:fixed;
+  z-index:998;
+  right:max(16px,calc((100vw - var(--container))/2 + 16px));
+  bottom:max(18px,env(safe-area-inset-bottom));
+  width:min(286px,calc(100vw - 32px));
+  direction:rtl;
+  pointer-events:none;
+}
+
+.floating-reviews-shell{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(15,118,110,.14);
+  border-radius:17px;
+  padding:7px 9px 9px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 14px 36px rgba(4,59,80,.15);
+  backdrop-filter:blur(13px);
+}
+
+.floating-reviews-head{
+  position:absolute;
+  left:9px;
+  top:7px;
+  z-index:4;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:5px;
+  margin:0;
+}
+
+.floating-reviews-title{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  color:#064e3b;
+  font-size:8.5px;
+  line-height:1.2;
+  font-weight:900;
+}
+
+.floating-reviews-title::before{
+  content:"";
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#22c55e;
+  box-shadow:0 0 0 3px rgba(34,197,94,.12);
+}
+
+.floating-reviews-stars{
+  color:#f59e0b;
+  direction:ltr;
+  font-size:8.5px;
+  line-height:1;
+  letter-spacing:.3px;
+  white-space:nowrap;
+}
+
+.floating-review-slider{
+  position:relative;
+  min-height:58px;
+}
+
+.floating-review-card{
+  position:absolute;
+  inset:0;
+  display:grid;
+  align-content:start;
+  gap:3px;
+  opacity:0;
+  transform:translate3d(0,16px,0) scale(.975);
+  filter:blur(4px);
+  transition:
+    opacity .42s ease,
+    transform .56s cubic-bezier(.2,.78,.16,1),
+    filter .42s ease;
+}
+
+.floating-review-card.is-active{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+  filter:blur(0);
+  z-index:2;
+  animation:floatingReviewIn .56s cubic-bezier(.2,.78,.16,1) both;
+}
+
+.floating-review-card.is-leaving{
+  opacity:0;
+  transform:translate3d(0,-14px,0) scale(.985);
+  filter:blur(3px);
+  animation:floatingReviewOut .38s ease both;
+}
+
+@keyframes floatingReviewIn{
+  0%{opacity:0;transform:translate3d(0,18px,0) scale(.97);filter:blur(5px)}
+  55%{opacity:1;transform:translate3d(0,-2px,0) scale(1);filter:blur(0)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
+}
+
+@keyframes floatingReviewOut{
+  to{opacity:0;transform:translate3d(0,-16px,0) scale(.985);filter:blur(3px)}
+}
+
+.floating-review-person{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-width:0;
+}
+
+.floating-review-avatar{
+  width:28px;
+  height:28px;
+  flex:0 0 28px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  box-shadow:0 7px 16px rgba(15,118,110,.18);
+}
+
+.floating-review-avatar.is-male{
+  background:linear-gradient(135deg,#0f766e,#14b8a6);
+}
+
+.floating-review-avatar.is-female{
+  background:linear-gradient(135deg,#be185d,#fb7185);
+}
+
+.floating-review-avatar svg{
+  width:16px;
+  height:16px;
+  display:block;
+}
+
+.floating-review-person div{
+  min-width:0;
+  padding-left:96px;
+}
+
+.floating-review-person b{
+  display:block;
+  color:#083f37;
+  font-size:10.5px;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.floating-review-person span{
+  display:block;
+  color:#6b7c80;
+  font-size:8px;
+  line-height:1.2;
+}
+
+.floating-review-card p{
+  margin:0;
+  color:#36565a;
+  font-size:9.5px;
+  line-height:1.45;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.floating-reviews-progress{
+  position:absolute;
+  right:0;
+  bottom:0;
+  height:2px;
+  width:100%;
+  background:linear-gradient(90deg,#22c55e,#0f766e);
+  transform-origin:right center;
+  animation:floatingReviewProgress 3.4s linear infinite;
+}
+
+@keyframes floatingReviewProgress{
+  from{transform:scaleX(1)}
+  to{transform:scaleX(0)}
+}
+
+@media(max-width:820px){
+  .floating-reviews{
+    right:max(12px,env(safe-area-inset-right));
+    bottom:max(12px,env(safe-area-inset-bottom));
+    width:min(276px,calc(100vw - 24px));
+  }
+}
+
+@media(max-width:560px){
+  .floating-reviews{
+    right:max(10px,env(safe-area-inset-right));
+    bottom:calc(max(10px,env(safe-area-inset-bottom)) + 112px);
+    width:min(258px,calc(100vw - 20px));
+  }
+
+  .floating-reviews-shell{
+    border-radius:15px;
+    padding:6px 8px 8px;
+  }
+
+  .floating-review-slider{
+    min-height:54px;
+  }
+
+  .floating-review-avatar{
+    width:26px;
+    height:26px;
+    flex-basis:26px;
+  }
+
+  .floating-review-avatar svg{
+    width:15px;
+    height:15px;
+  }
+
+  .floating-reviews-title,
+  .floating-reviews-stars{
+    font-size:8px;
+  }
+
+  .floating-review-person b{
+    font-size:9.5px;
+  }
+
+  .floating-review-person div{
+    padding-left:86px;
+  }
+
+  .floating-review-card p{
+    font-size:9px;
+    line-height:1.35;
+  }
+}
+
+@media(max-width:360px){
+  .floating-reviews{
+    bottom:calc(max(10px,env(safe-area-inset-bottom)) + 108px);
+    width:calc(100vw - 20px);
+  }
+}
+
+
+
+/* =========================================================
+   Marketing copy + elegant review initials + new floating review animation
+   ========================================================= */
+.review-avatar{
+  width:58px;
+  height:58px;
+  border-radius:20px;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 30% 25%,#ffe8b0 0%,#ffb84a 32%,#7a1c5a 100%);
+  color:#ffffff;
+  font-size:26px;
+  font-weight:900;
+  line-height:1;
+  border:2px solid rgba(255,255,255,.88);
+  box-shadow:0 14px 30px rgba(122,28,90,.18), inset 0 2px 10px rgba(255,255,255,.22);
+}
+
+.floating-reviews{
+  position:fixed;
+  z-index:998;
+  right:max(16px,calc((100vw - var(--container))/2 + 16px));
+  bottom:max(18px,env(safe-area-inset-bottom));
+  width:min(304px,calc(100vw - 32px));
+  direction:rtl;
+  pointer-events:auto;
+}
+
+.floating-reviews-shell{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(34,17,63,.10);
+  border-radius:20px;
+  padding:9px 10px 10px;
+  background:rgba(255,255,255,.95);
+  box-shadow:0 18px 42px rgba(34,17,63,.18);
+  backdrop-filter:blur(14px);
+}
+
+.floating-reviews-title{
+  color:#22113f;
+  font-size:9px;
+  font-weight:900;
+}
+.floating-reviews-title::before{
+  background:#22c55e;
+  box-shadow:0 0 0 4px rgba(34,197,94,.12);
+}
+.floating-reviews-stars{
+  color:#f59e0b;
+  font-size:9px;
+  letter-spacing:.6px;
+  animation:floatingStarsTwinkle 1.8s ease-in-out infinite;
+}
+
+.floating-review-slider{
+  position:relative;
+  min-height:72px;
+}
+
+.floating-review-card{
+  position:absolute;
+  inset:0;
+  display:grid;
+  align-content:start;
+  gap:6px;
+  opacity:0;
+  transform:translate3d(24px,0,0) scale(.96) rotate(.35deg);
+  filter:blur(6px);
+  transition:none;
+}
+.floating-review-card.is-active{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1) rotate(0deg);
+  filter:blur(0);
+  z-index:2;
+  animation:floatingReviewSwipeIn .6s cubic-bezier(.18,.8,.2,1) both;
+}
+.floating-review-card.is-leaving{
+  opacity:0;
+  transform:translate3d(-26px,0,0) scale(.985) rotate(-.25deg);
+  filter:blur(4px);
+  z-index:1;
+  animation:floatingReviewSwipeOut .5s cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes floatingReviewSwipeIn{
+  0%{opacity:0;transform:translate3d(28px,8px,0) scale(.94) rotate(.45deg);filter:blur(7px)}
+  55%{opacity:1;transform:translate3d(-3px,0,0) scale(1.01) rotate(-.1deg);filter:blur(0)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1) rotate(0);filter:blur(0)}
+}
+@keyframes floatingReviewSwipeOut{
+  from{opacity:1;transform:translate3d(0,0,0) scale(1) rotate(0);filter:blur(0)}
+  to{opacity:0;transform:translate3d(-26px,-4px,0) scale(.985) rotate(-.25deg);filter:blur(4px)}
+}
+@keyframes floatingStarsTwinkle{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.08);opacity:.85}
+}
+
+.floating-review-person{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+}
+.floating-review-avatar{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 30% 25%,#ffd977 0%,#ff9f1a 32%,#6c1f73 100%);
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  line-height:1;
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 10px 22px rgba(108,31,115,.22), inset 0 2px 10px rgba(255,255,255,.18);
+}
+.floating-review-avatar svg{display:none !important;}
+.floating-review-person div{
+  min-width:0;
+  padding-left:90px;
+}
+.floating-review-person b{
+  display:block;
+  color:#1d1d39;
+  font-size:11px;
+  line-height:1.25;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.floating-review-person span{
+  display:block;
+  color:#6b7280;
+  font-size:8.5px;
+  line-height:1.25;
+}
+.floating-review-card p{
+  margin:0;
+  color:#39435e;
+  font-size:10px;
+  line-height:1.55;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.floating-reviews-progress{
+  position:absolute;
+  right:0;
+  bottom:0;
+  height:3px;
+  width:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg,#ffbe0b,#fb5607,#8338ec);
+  transform-origin:right center;
+  animation:none;
+}
+@keyframes floatingReviewProgress{
+  from{transform:scaleX(1)}
+  to{transform:scaleX(0)}
+}
+
+@media(max-width:820px){
+  .floating-reviews{
+    right:max(12px,env(safe-area-inset-right));
+    bottom:max(12px,env(safe-area-inset-bottom));
+    width:min(290px,calc(100vw - 24px));
+  }
+}
+
+@media(max-width:560px){
+  .floating-reviews{
+    right:max(10px,env(safe-area-inset-right));
+    bottom:calc(max(10px,env(safe-area-inset-bottom)) + 116px);
+    width:min(270px,calc(100vw - 20px));
+  }
+  .floating-reviews-shell{border-radius:18px;padding:8px 9px 9px;}
+  .floating-review-slider{min-height:68px;}
+  .floating-review-avatar{width:32px;height:32px;flex-basis:32px;font-size:17px;}
+  .floating-review-person div{padding-left:84px;}
+  .floating-review-person b{font-size:10px;}
+  .floating-review-card p{font-size:9.5px;line-height:1.45;}
+}
+
+@media(max-width:360px){
+  .floating-reviews{
+    bottom:calc(max(10px,env(safe-area-inset-bottom)) + 108px);
+    width:calc(100vw - 20px);
+  }
+}
+
+/* Simple quote form */
+.quote-form{
+  border-radius:18px !important;
+  padding:24px !important;
+  border:1px solid rgba(15,118,110,.13) !important;
+  box-shadow:0 18px 42px rgba(15,118,110,.12) !important;
+}
+
+.quote-form .form-grid{
+  gap:12px !important;
+}
+
+.quote-form .field{
+  gap:6px !important;
+}
+
+.quote-form .field label{
+  color:#123833 !important;
+  font-size:12px !important;
+}
+
+.quote-form .field input,
+.quote-form .field select,
+.quote-form .field textarea{
+  min-height:48px !important;
+  border-radius:10px !important;
+  background:#ffffff !important;
+  border-color:#d9e9e3 !important;
+  padding:11px 12px !important;
+}
+
+.quote-form .field input:focus,
+.quote-form .field select:focus,
+.quote-form .field textarea:focus{
+  border-color:#0f766e !important;
+  box-shadow:0 0 0 3px rgba(15,118,110,.12) !important;
+}
+
+.quote-form .service-check{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  direction:rtl !important;
+  gap:7px !important;
+  border-radius:10px !important;
+  background:#f8faf7 !important;
+  padding:8px 10px !important;
+  min-height:38px !important;
+  color:#123833 !important;
+  font-size:12px !important;
+  line-height:1.4 !important;
+  text-align:right !important;
+  white-space:nowrap !important;
+}
+
+.quote-form .service-check input[type="checkbox"]{
+  width:14px !important;
+  height:14px !important;
+  min-width:14px !important;
+  min-height:14px !important;
+  flex:0 0 14px !important;
+  margin:0 !important;
+  accent-color:#0f766e !important;
+}
+
+.quote-form .quote-submit{
+  min-height:50px !important;
+  border-radius:12px !important;
+}
+
+@media(max-width:680px){
+  .quote-form{
+    padding:18px !important;
+  }
+
+  .quote-form .form-grid,
+  .quote-form .services-select{
+    grid-template-columns:1fr !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3053,14 +3586,13 @@ body::after{
 <!-- End Google Tag Manager (noscript) -->
 <header class="header">
 <div class="container header-inner">
-<a aria-label="شركة السلطان لنقل العفش" class="brand" href="#home">
-<img alt="شعار شركة السلطان لنقل العفش في مصر" decoding="async" fetchpriority="high" loading="eager" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/logo.webp?tr=w-360,q-80"/>
+<a aria-label="شركة المهندسلنقل العفش" class="brand" href="#home">
+<img alt="شعار شركة المهندسلنقل العفش في مصر" decoding="async" fetchpriority="high" loading="eager" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/logo.webp?tr=w-360,q-80"/>
 </a>
 <nav aria-label="القائمة الرئيسية" class="nav" id="mainNav">
 <a href="#home">الرئيسية</a>
 <a href="#about">من نحن</a>
 <a href="#services">الخدمات</a>
-<a href="#storage-services">خدمة تخزين العفش</a>
 <a href="#process">خطوات النقل</a>
 <a href="#areas">مناطق الخدمة</a>
 <a href="#reviews">آراء العملاء</a>
@@ -3076,9 +3608,9 @@ body::after{
 <main>
 <section class="hero" id="home">
 <div class="hero-carousel" id="heroCarousel">
-<div class="hero-slide active"><img alt="شركة نقل عفش في القاهرة والجيزة السلطان لنقل الأثاث" decoding="async" fetchpriority="high" loading="eager" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/slide1.webp?tr=w-1600,q-80"/></div>
-<div class="hero-slide"><img alt="ونش رفع أثاث وتغليف عفش احترافي شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/slide2.webp?tr=w-1600,q-80"/></div>
-<div class="hero-slide"><img alt="سيارات نقل عفش مجهزة وخدمة نقل آمن من السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/slide3.webp?tr=w-1600,q-80"/></div>
+<div class="hero-slide active"><img alt="شركة نقل عفش في القاهرة والجيزة المهندسلنقل الأثاث" decoding="async" fetchpriority="high" loading="eager" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/slide1.webp?tr=w-1600,q-80"/></div>
+<div class="hero-slide"><img alt="ونش رفع أثاث وتغليف عفش احترافي شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/slide2.webp?tr=w-1600,q-80"/></div>
+<div class="hero-slide"><img alt="سيارات نقل عفش مجهزة وخدمة نقل آمن من السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/slide3.webp?tr=w-1600,q-80"/></div>
 <div aria-label="صور العرض الرئيسية" class="hero-dots">
 <button aria-label="الصورة الأولى" class="active" type="button"></button>
 <button aria-label="الصورة الثانية" type="button"></button>
@@ -3100,17 +3632,17 @@ body::after{
 <section class="section" id="about">
 <div class="container about-grid">
 <div class="about-media reveal">
-<img alt="شركة نقل عفش بالقاهرة مع فريق تغليف أثاث محترف من السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post1.webp?tr=w-900,q-80"/>
+<img alt="شركة نقل عفش بالقاهرة مع فريق تغليف أثاث محترف من السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post1.webp?tr=w-900,q-80"/>
 <div class="about-card scroll-item" style="--reveal-order: 0;">
-<img alt="شعار السلطان لنقل العفش وخدمات تغليف الأثاث" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/logo.webp?tr=w-360,q-80"/>
+<img alt="شعار المهندسلنقل العفش وخدمات تغليف الأثاث" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/logo.webp?tr=w-360,q-80"/>
 <strong>20 عامًا</strong>
-<span>من الخبرة في نقل وتغليف الأثاث داخل مصر.</span>
+<span>من الخبرة في نقل العفش والتغليف والرفع داخل القاهرة والجيزة والمحافظات.</span>
 </div>
 </div>
 <div class="reveal">
 <div class="section-kicker">من نحن</div>
-<h2 class="section-heading">خبرة منظمة وفريق يعرف كيف يحمي كل قطعة</h2>
-<p class="section-copy">نخطط لكل عملية نقل حسب حجم الأثاث وطبيعة المكان والدور ونوع القطع، ثم نجهز السيارة والفريق وخامات التغليف والونش عند الحاجة.</p>
+<h2 class="section-heading">نقل عفشك بأمان وسرعة مع فريق يعتني بكل قطعة</h2>
+<p class="section-copy">مع المهندستحصل على خدمة نقل عفش متكاملة تبدأ بالمعاينة الدقيقة، ثم التغليف المحترف، ثم التحميل والنقل والتركيب النهائي بأعلى مستوى من الأمان والالتزام.</p>
 <div class="about-list">
 <div>معاينة وتقدير واضح لحجم العمل</div>
 <div>حماية خاصة للزجاج والأجهزة</div>
@@ -3125,44 +3657,44 @@ body::after{
 <div class="container">
 <div class="center reveal">
 <div class="section-kicker">خدماتنا</div>
-<h2 class="section-heading">كل ما تحتاجه للانتقال في مكان واحد</h2>
-<p class="section-copy">يمكنك طلب خدمة كاملة أو اختيار الخدمات التي تناسب احتياجك، من التغليف فقط وحتى النقل والفك والتركيب والتخزين.</p>
+<h2 class="section-heading">خدمات نقل عفش متكاملة تناسب كل احتياج</h2>
+<p class="section-copy">نوفر لك باقة خدمات عملية ومناسبة للإعلانات والطلبات السريعة: تغليف احترافي، سيارات مجهزة، ونش رفع، وفريق متخصص ينجز النقل بعناية وفي الوقت المحدد.</p>
 </div>
 <div class="services-grid">
 <article class="service-card reveal">
-<div class="service-image"><img alt="نقل عفش من الباب للباب في القاهرة والجيزة شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post2.webp?tr=w-900,q-80"/><span class="service-number">01</span></div>
+<div class="service-image"><img alt="نقل عفش من الباب للباب في القاهرة والجيزة شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post2.webp?tr=w-900,q-80"/><span class="service-number">01</span></div>
 <div class="service-body"><h3>نقل من الباب للباب</h3><p>خدمة متكاملة تبدأ من فك وتغليف الأثاث في موقعك وتنتهي بالتسليم والتركيب في المكان الجديد.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 <article class="service-card reveal">
-<div class="service-image"><img alt="عروض نقل عفش بتكلفة مناسبة مع شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post3.webp?tr=w-900,q-80"/><span class="service-number">02</span></div>
+<div class="service-image"><img alt="عروض نقل عفش بتكلفة مناسبة مع شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post3.webp?tr=w-900,q-80"/><span class="service-number">02</span></div>
 <div class="service-body"><h3>نقل اقتصادي بتكلفة مناسبة</h3><p>حلول مرنة تناسب حجم المنقولات والمسافة والخدمات المطلوبة دون التنازل عن الأمان والتنظيم.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 <article class="service-card reveal">
-<div class="service-image"><img alt="سيارات نقل عفش مجهزة وآمنة من شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post4.webp?tr=w-900,q-80"/><span class="service-number">03</span></div>
+<div class="service-image"><img alt="سيارات نقل عفش مجهزة وآمنة من شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post9.webp?tr=w-900,q-80"/><span class="service-number">03</span></div>
 <div class="service-body"><h3>أسطول سيارات مجهز</h3><p>سيارات نقل مجهزة ومناسبة لمختلف أحجام الأثاث مع ترتيب وتثبيت المنقولات داخل السيارة.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 <article class="service-card reveal">
-<div class="service-image"><img alt="تغليف أثاث بخامات قوية قبل النقل شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post5.webp?tr=w-900,q-80"/><span class="service-number">04</span></div>
+<div class="service-image"><img alt="تغليف أثاث بخامات قوية قبل النقل شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post10.webp?tr=w-900,q-80"/><span class="service-number">04</span></div>
 <div class="service-body"><h3>خامات تغليف ممتازة</h3><p>استخدام خامات مناسبة للأخشاب والزجاج والأجهزة للحماية من الخدوش والصدمات أثناء النقل.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 <article class="service-card reveal">
-<div class="service-image"><img alt="حماية وتغليف العفش والزجاج والأجهزة أثناء النقل" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post6.webp?tr=w-900,q-80"/><span class="service-number">05</span></div>
+<div class="service-image"><img alt="حماية وتغليف العفش والزجاج والأجهزة أثناء النقل" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post6.webp?tr=w-900,q-80"/><span class="service-number">05</span></div>
 <div class="service-body"><h3>حماية وتغليف كامل</h3><p>تغليف متعدد الطبقات للقطع الحساسة والثقيلة مع حماية الزوايا والأسطح والأجزاء المتحركة.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 <article class="service-card reveal">
-<div class="service-image"><img alt="ونش رفع عفش للأدوار العليا والمداخل الضيقة شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post7.webp?tr=w-900,q-80"/><span class="service-number">06</span></div>
+<div class="service-image"><img alt="ونش رفع عفش للأدوار العليا والمداخل الضيقة شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post7.webp?tr=w-900,q-80"/><span class="service-number">06</span></div>
 <div class="service-body"><h3>رفع الأثاث للأدوار العليا</h3><p>خدمة ونش رفع للأدوار المرتفعة والمداخل الضيقة لتقليل الاحتكاك وحماية الأثاث والمبنى.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 <article class="service-card reveal">
-<div class="service-image"><img alt="فك وتركيب أثاث وغرف نوم قبل النقل شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post8.webp?tr=w-900,q-80"/><span class="service-number">07</span></div>
+<div class="service-image"><img alt="فك وتركيب أثاث وغرف نوم قبل النقل شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post8.webp?tr=w-900,q-80"/><span class="service-number">07</span></div>
 <div class="service-body"><h3>فك وتركيب الأثاث</h3><p>نجارون متخصصون في فك غرف النوم والمطابخ والدواليب ثم إعادة تركيبها بدقة في المكان الجديد.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 <article class="service-card reveal">
-<div class="service-image"><img alt="فك وتركيب تكييفات ونقل أجهزة منزلية بأمان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post1.webp?tr=w-900,q-80"/><span class="service-number">08</span></div>
+<div class="service-image"><img alt="فك وتركيب تكييفات ونقل أجهزة منزلية بأمان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post11.webp?tr=w-900,q-80"/><span class="service-number">08</span></div>
 <div class="service-body"><h3>فك وتركيب التكييفات</h3><p>فك ونقل وإعادة تركيب أجهزة التكييف بواسطة فني تكييف متخصص، مع التعامل الآمن مع الوحدات والتوصيلات.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 <article class="service-card reveal">
-<div class="service-image"><img alt="تحميل وتنزيل عفش بعناية مع عمال نقل محترفين" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post2.webp?tr=w-900,q-80"/><span class="service-number">09</span></div>
+<div class="service-image"><img alt="تحميل وتنزيل عفش بعناية مع عمال نقل محترفين" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post2.webp?tr=w-900,q-80"/><span class="service-number">09</span></div>
 <div class="service-body"><h3>تحميل وتنزيل بعناية</h3><p>تنظيم احترافي أثناء التحميل والتنزيل مع توزيع صحيح للقطع داخل السيارة للحفاظ على الأثاث طوال الرحلة.</p><a class="service-link" href="#quote">اطلب الخدمة ←</a></div>
 </article>
 </div>
@@ -3172,67 +3704,24 @@ body::after{
 <div class="container showcase-grid">
 <div class="showcase-content reveal">
 <div class="section-kicker">خدمة بدون تعقيد</div>
-<h2 class="section-heading">صور واضحة تشرح طريقة شغلنا بدل الفيديو</h2>
-<p class="section-copy">اعرض خدمات السلطان بصور سريعة التحميل ومناسبة للإعلانات: تغليف، سيارات مجهزة، ونش رفع، وفريق متخصص يتعامل مع كل قطعة بعناية.</p>
+<h2 class="section-heading">نقل عفش آمن ومنظم من أول خطوة لحد التسليم</h2>
+<p class="section-copy">مع المهندسلنقل العفش هتنقل بيتك أو مكتبك براحة أكبر: معاينة سريعة، تغليف محكم، فك وتركيب، سيارات مجهزة، وونش رفع عند الحاجة مع فريق يعرف يتعامل مع كل قطعة أثاث بعناية.</p>
 <div class="showcase-points">
-<span>صور محسّنة للتحميل السريع</span>
-<span>مناسبة للموبايل والكمبيوتر</span>
-<span>Alt يحتوي على كلمات مفتاحية</span>
+<span>تغليف يحافظ على الأثاث والزجاج والأجهزة</span>
+<span>سيارات نقل مجهزة لكل الأحجام والمسافات</span>
+<span>ونش رفع وفريق متخصص لتقليل الوقت والمجهود</span>
 </div>
 <a class="btn btn-dark tracked-call" href="tel:01034617494">احجز نقل العفش الآن</a>
 </div>
 <div class="showcase-image reveal">
-<img alt="صور خدمات نقل عفش وتغليف ورفع أثاث شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/slide2.webp?tr=w-1600,q-80"/>
-</div>
-</div>
-</section>
-<section class="section storage-section" id="storage-services">
-<div class="container">
-<div class="center reveal">
-<div class="section-kicker">تخزين العفش</div>
-<h2 class="section-heading">حلول تخزين آمنة ومرنة للأثاث</h2>
-<p class="section-copy">نوفر حلول تخزين منظمة وآمنة تناسب احتياجاتك، سواء لفترة قصيرة أو لفترات أطول، مع الحفاظ على ترتيب الأثاث والعناية بالقطع الحساسة.</p>
-</div>
-<div class="storage-grid">
-<article class="storage-card reveal">
-<div class="storage-image">
-<img alt="تخزين عفش قصير الأجل في أماكن آمنة شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post3.webp?tr=w-900,q-80"/>
-<span class="storage-tag">تخزين قصير الأجل</span>
-</div>
-<div class="storage-body">
-<h3>تخزين قصير الأجل</h3>
-<p>خدمة مناسبة عند التجديد أو الانتقال، مع ترتيب القطع داخل مساحة نظيفة وآمنة لحين إعادة التسليم.</p>
-<ul class="storage-list">
-<li>حل مناسب عند تأجيل الاستلام أو التشطيب.</li>
-<li>تنظيم وترتيب القطع لتسهيل الاسترجاع لاحقًا.</li>
-<li>إمكانية الجمع بين النقل والتخزين في نفس الطلب.</li>
-</ul>
-<a class="service-link" href="#quote">اطلب الخدمة ←</a>
-</div>
-</article>
-<article class="storage-card reveal">
-<div class="storage-image">
-<img alt="تخزين أثاث طويل الأجل مع حماية وتغليف شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post4.webp?tr=w-900,q-80"/>
-<span class="storage-tag">تخزين طويل الأجل</span>
-</div>
-<div class="storage-body">
-<h3>تخزين طويل الأجل</h3>
-<p>مناسب للعملاء الذين يحتاجون إلى إبقاء الأثاث في مكان آمن لفترة أطول مع العناية بالقطع الحساسة وإبقائها مرتبة.</p>
-<ul class="storage-list">
-<li>مناسب للأثاث المنزلي أو المكتبي.</li>
-<li>حماية أساسية للقطع المهمة قبل التخزين.</li>
-<li>مرونة في مدة التخزين وموعد إعادة التسليم.</li>
-</ul>
-<a class="service-link" href="#quote">اطلب الخدمة ←</a>
-</div>
-</article>
+<img alt="صور خدمات نقل عفش وتغليف ورفع أثاث شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/slide2.webp?tr=w-1600,q-80"/>
 </div>
 </div>
 </section>
 <section class="section" id="process">
 <div class="container process-layout">
 <div class="process-image reveal">
-<img alt="خطوات نقل العفش من المعاينة للتسليم شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post5.webp?tr=w-900,q-80"/>
+<img alt="خطوات نقل العفش من المعاينة للتسليم شركة السلطان" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post10.webp?tr=w-900,q-80"/>
 <div class="process-label"><strong>4</strong><span>خطوات واضحة<br/>حتى التسليم</span></div>
 </div>
 <div class="reveal">
@@ -3259,8 +3748,8 @@ body::after{
 <section class="section packing">
 <div class="container packing-grid">
 <div class="packing-visual reveal">
-<img alt="حماية الأثاث أثناء النقل بخامات تغليف قوية" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post6.webp?tr=w-900,q-80"/>
-<img alt="تغليف عفش متعدد الطبقات قبل النقل" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post7.webp?tr=w-900,q-80"/>
+<img alt="حماية الأثاث أثناء النقل بخامات تغليف قوية" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post6.webp?tr=w-900,q-80"/>
+<img alt="تغليف عفش متعدد الطبقات قبل النقل" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post7.webp?tr=w-900,q-80"/>
 <div class="packing-chip"><b>حماية متعددة الطبقات</b>لكل نوع من الأثاث</div>
 </div>
 <div class="reveal">
@@ -3303,7 +3792,7 @@ body::after{
 <a class="btn btn-primary tracked-call" href="tel:01034617494" style="margin-top:27px">اسأل عن منطقتك</a>
 </div>
 <div class="coverage-card reveal">
-<img alt="شركة نقل عفش تخدم القاهرة والجيزة والمحافظات" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/post8.webp?tr=w-900,q-80"/>
+<img alt="شركة نقل عفش تخدم القاهرة والجيزة والمحافظات" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/post8.webp?tr=w-900,q-80"/>
 <div class="coverage-overlay"><h3>نقل محلي وبين المحافظات</h3><p>حدد منطقة التحميل والوصول وسنرتب لك الفريق والسيارة المناسبة.</p></div>
 </div>
 </div>
@@ -3334,7 +3823,7 @@ body::after{
 <a class="btn btn-outline tracked-whatsapp" href="https://wa.me/201034617494" rel="noopener" target="_blank">واتساب</a>
 </div>
 </div>
-<div class="promo-image"><img alt="عرض نقل عفش شامل مع السلطان لنقل الأثاث" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/slide1.webp?tr=w-1600,q-80"/></div>
+<div class="promo-image"><img alt="عرض نقل عفش شامل مع المهندسلنقل الأثاث" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/slide1.webp?tr=w-1600,q-80"/></div>
 </div>
 </div>
 </section>
@@ -3354,7 +3843,7 @@ body::after{
 <section class="section" id="faq">
 <div class="container faq-layout">
 <aside class="faq-side reveal">
-<img alt="شعار السلطان لنقل العفش وخدمة العملاء" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/logo.webp?tr=w-360,q-80"/>
+<img alt="شعار المهندسلنقل العفش وخدمة العملاء" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/logo.webp?tr=w-360,q-80"/>
 <div class="section-kicker">الأسئلة الشائعة</div>
 <h2 class="section-heading">إجابات سريعة قبل الحجز</h2>
 <p class="section-copy">لم تجد إجابتك؟ تواصل معنا هاتفيًا أو عبر واتساب وأرسل تفاصيل النقل.</p>
@@ -3387,8 +3876,8 @@ body::after{
 <div class="field"><label for="fromArea">منطقة التحميل</label><input id="fromArea" placeholder="مثال: مدينة نصر" required="" type="text"/></div>
 <div class="field"><label for="toArea">منطقة الوصول</label><input id="toArea" placeholder="مثال: التجمع الخامس" required="" type="text"/></div>
 <div class="field"><label for="floor">الدور</label><select id="floor"><option>الدور الأرضي</option><option>الدور الأول</option><option>الدور الثاني أو الثالث</option><option>دور مرتفع</option></select></div>
-<div class="field"><label for="elevator">هل يوجد مصعد؟</label><select id="elevator"><option>نعم، يوجد مصعد</option><option>لا يوجد مصعد</option><option>غير متأكد</option></select></div>
-<div class="field full"><label>الخدمات المطلوبة</label><div class="services-select"><label class="service-check"><input checked="" type="checkbox" value="نقل عفش"/> نقل عفش</label><label class="service-check"><input type="checkbox" value="تغليف"/> تغليف</label><label class="service-check"><input type="checkbox" value="فك وتركيب"/> فك وتركيب</label><label class="service-check"><input type="checkbox" value="تخزين"/> تخزين</label></div></div>
+<div class="field"><label for="elevator">الدور في المكان الآخر</label><select id="elevator"><option>الدور الأرضي</option><option>الدور الأول</option><option>الدور الثاني أو الثالث</option><option>دور مرتفع</option></select></div>
+<div class="field full"><label>الخدمات المطلوبة</label><div class="services-select"><label class="service-check"><input checked="" type="checkbox" value="نقل عفش"/> نقل عفش</label><label class="service-check"><input type="checkbox" value="تغليف"/> تغليف</label><label class="service-check"><input type="checkbox" value="فك وتركيب"/> فك وتركيب</label><label class="service-check"><input type="checkbox" value="تخزين"/> ونش هيدروليكى</label></div></div>
 <div class="field full"><label for="notes">تفاصيل إضافية</label><textarea id="notes" placeholder="مثال: شقة 3 غرف، يوجد قطع زجاجية وأجهزة كبيرة" rows="4"></textarea></div>
 </div>
 <button class="btn btn-primary quote-submit" type="submit">إرسال الطلب عبر واتساب</button>
@@ -3400,7 +3889,7 @@ body::after{
 <footer class="footer">
 <div class="container">
 <div class="footer-grid">
-<div class="footer-brand"><img alt="شعار شركة السلطان لنقل العفش" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_sultan/logo.webp?tr=w-360,q-80"/><p>نقل وتغليف الأثاث داخل القاهرة والجيزة وبين المحافظات، مع خدمات الفك والتركيب والتخزين وسيارات مجهزة.</p></div>
+<div class="footer-brand"><img alt="شعار شركة المهندسلنقل العفش" decoding="async" loading="lazy" src="https://ik.imagekit.io/mkek1asn5/Al_mohandes/logo.webp?tr=w-360,q-80"/><p>شركة المهندستقدم نقل عفش احترافي داخل القاهرة والجيزة وبين المحافظات مع تغليف قوي، سيارات مجهزة، ونش رفع، وفنيين ونجارين يهتمون بكل قطعة من البداية للنهاية.</p></div>
 <div><h3>روابط سريعة</h3><div class="footer-links"><a href="#about">من نحن</a><a href="#services">الخدمات</a><a href="#process">خطوات النقل</a><a href="#reviews">آراء العملاء</a></div></div>
 <div><h3>خدماتنا</h3><div class="footer-links"><a href="#services">نقل المنازل</a><a href="#services">نقل الشركات</a><a href="#services">التغليف</a><a href="#services">الفك والتركيب</a></div></div>
 <div><h3>تواصل معنا</h3><div class="footer-phone-list"><a href="tel:01034617494">01034617494</a><a href="https://wa.me/201034617494" rel="noopener" target="_blank">WhatsApp</a></div></div>
@@ -3408,6 +3897,59 @@ body::after{
 <div class="footer-bottom"><span>© جميع الحقوق محفوظة لشركة السلطان</span><span>متاحون لاستقبال الطلبات على مدار 24 ساعة</span></div>
 </div>
 </footer>
+
+<div aria-label="آراء العملاء العائمة" aria-live="polite" class="floating-reviews" id="floatingReviews">
+  <div class="floating-reviews-shell">
+    <div class="floating-reviews-head">
+      <div class="floating-reviews-title">تقييمات العملاء</div>
+      <div class="floating-reviews-stars">★★★★★</div>
+    </div>
+    <div class="floating-review-slider">
+      <article class="floating-review-card is-active">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">م</span><div><b>محمد سعيد</b><span>القاهرة</span></div></div>
+        <p>التغليف كان ممتاز، والأثاث وصل بدون خدوش وفي المعاد.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">س</span><div><b>سارة عبد الحميد</b><span>الجيزة</span></div></div>
+        <p>الفريق منظم جدًا وتعاملوا بحرص مع الزجاج والأجهزة.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">خ</span><div><b>خالد إبراهيم</b><span>طنطا</span></div></div>
+        <p>النقل بين المحافظات تم بسرعة وترتيب من أول خطوة.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">م</span><div><b>منى عادل</b><span>مدينة نصر</span></div></div>
+        <p>التواصل كان واضح، والسعر مناسب مقابل الخدمة.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">أ</span><div><b>أحمد مصطفى</b><span>المهندسين</span></div></div>
+        <p>الونش ساعدنا جدًا، والرفع تم بدون أي تلفيات.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">ر</span><div><b>ريم أشرف</b><span>التجمع الخامس</span></div></div>
+        <p>فك وتركيب الغرف تم باحترافية وكل شيء رجع مكانه.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">م</span><div><b>محمود جابر</b><span>الشيخ زايد</span></div></div>
+        <p>السيارة وصلت في الموعد والفريق كان محترم وسريع.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">ه</span><div><b>هبة سامي</b><span>المعادي</span></div></div>
+        <p>أفضل تجربة نقل عفش، خصوصًا في تغليف القطع الحساسة.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">ك</span><div><b>كريم حسن</b><span>أكتوبر</span></div></div>
+        <p>الخدمة منظمة من الحجز لحد التسليم، وأنصح بهم.</p>
+      </article>
+      <article class="floating-review-card">
+        <div class="floating-review-person"><span class="floating-review-avatar" aria-hidden="true">ن</span><div><b>نجلاء فتحي</b><span>مصر الجديدة</span></div></div>
+        <p>العمالة محترفة، والبيت اتنقل بهدوء وبدون فوضى.</p>
+      </article>
+    </div>
+    <span aria-hidden="true" class="floating-reviews-progress"></span>
+  </div>
+</div>
+
 <div aria-label="أرقام الاتصال السريع" class="floating-call-stack">
 <a aria-label="اتصل الآن على 01034617494" class="floating-call floating-call-primary tracked-call" href="tel:01034617494" id="floatingCallButton">
 <span aria-hidden="true" class="floating-call-icon"><svg fill="none" viewbox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6a2 2 0 0 1 1.7 2Z" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></span>
@@ -3622,7 +4164,7 @@ body::after{
           'منطقة التحميل: ' + document.getElementById('fromArea').value.trim(),
           'منطقة الوصول: ' + document.getElementById('toArea').value.trim(),
           'الدور: ' + document.getElementById('floor').value,
-          'المصعد: ' + document.getElementById('elevator').value,
+          'الدور في المكان الآخر: ' + document.getElementById('elevator').value,
           'الخدمات: ' + services,
           'تفاصيل إضافية: ' + (document.getElementById('notes').value.trim() || 'لا توجد')
         ].join('\n');
@@ -3853,6 +4395,75 @@ body::after{
   } else {
     startImageScrollTransitions();
   }
+})();
+</script>
+
+
+
+<script>
+(() => {
+  const floatingReviews = document.getElementById('floatingReviews');
+  if (!floatingReviews) return;
+
+  const cards = [...floatingReviews.querySelectorAll('.floating-review-card')];
+  const progress = floatingReviews.querySelector('.floating-reviews-progress');
+  if (cards.length < 2) return;
+
+  let currentIndex = cards.findIndex(card => card.classList.contains('is-active'));
+  if (currentIndex < 0) currentIndex = 0;
+
+  const cycleMs = 4200;
+  let timer = null;
+
+  const resetProgress = () => {
+    if (!progress) return;
+    progress.style.animation = 'none';
+    void progress.offsetWidth;
+    progress.style.animation = `floatingReviewProgress ${cycleMs}ms linear forwards`;
+  };
+
+  const showFloatingReview = () => {
+    const current = cards[currentIndex];
+    const nextIndex = (currentIndex + 1) % cards.length;
+    const next = cards[nextIndex];
+
+    current.classList.remove('is-active');
+    current.classList.add('is-leaving');
+
+    next.classList.remove('is-leaving', 'is-active');
+    void next.offsetWidth;
+    next.classList.add('is-active');
+
+    window.setTimeout(() => current.classList.remove('is-leaving'), 520);
+    currentIndex = nextIndex;
+    resetProgress();
+  };
+
+  const startSlider = () => {
+    if (timer) window.clearInterval(timer);
+    resetProgress();
+    timer = window.setInterval(showFloatingReview, cycleMs);
+  };
+
+  const pauseSlider = () => {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+    if (progress) progress.style.animationPlayState = 'paused';
+  };
+
+  const resumeSlider = () => {
+    if (progress) progress.style.animationPlayState = 'running';
+    startSlider();
+  };
+
+  floatingReviews.addEventListener('mouseenter', pauseSlider);
+  floatingReviews.addEventListener('mouseleave', resumeSlider);
+  floatingReviews.addEventListener('touchstart', pauseSlider, { passive: true });
+  floatingReviews.addEventListener('touchend', resumeSlider, { passive: true });
+
+  startSlider();
 })();
 </script>
 
